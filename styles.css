@@ -105,7 +105,6 @@ nav.scrolled .nav-links a {
 .hero {
     min-height: 100vh;
     display: flex;
-    padding-top: 6rem;
     align-items: center;
     position: relative;
     overflow: hidden;
@@ -114,6 +113,7 @@ nav.scrolled .nav-links a {
 .hero-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    padding-top: 2rem;
     gap: 4rem;
     align-items: center;
     z-index: 2;
