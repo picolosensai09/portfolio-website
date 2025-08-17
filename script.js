@@ -1,4 +1,3 @@
-// Navbar scroll effect
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
@@ -8,7 +7,6 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Mobile menu functionality
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const navLinks = document.getElementById('navLinks');
 
@@ -17,7 +15,6 @@ mobileMenuBtn.addEventListener('click', () => {
     mobileMenuBtn.textContent = navLinks.classList.contains('mobile-open') ? '✕' : '☰';
 });
 
-// Close mobile menu when clicking on a link
 document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
         navLinks.classList.remove('mobile-open');
@@ -25,7 +22,6 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     });
 });
 
-// Close mobile menu when clicking outside
 document.addEventListener('click', (e) => {
     if (!navbar.contains(e.target)) {
         navLinks.classList.remove('mobile-open');
@@ -33,7 +29,6 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -47,7 +42,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Intersection Observer for fade-in animations
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
@@ -61,12 +55,10 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe all fade-in elements
 document.querySelectorAll('.fade-in').forEach(el => {
     observer.observe(el);
 });
 
-// Animate skill progress bars when visible
 const skillObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -85,48 +77,39 @@ document.querySelectorAll('.skill-card').forEach(card => {
     skillObserver.observe(card);
 });
 
-// Contact form handling
 document.getElementById('contactForm').addEventListener('submit', function(e) {
     e.preventDefault();
     
-    // Get form data
     const formData = new FormData(this);
     const name = formData.get('name');
     const email = formData.get('email');
     const subject = formData.get('subject') || 'New Contact Form Submission';
     const message = formData.get('message');
     
-    // Simple form validation
     if (!name || !email || !message) {
         alert('Please fill in all required fields.');
         return;
     }
     
-    // Create mailto link
     const mailtoLink = `mailto:parashsahu024@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
         `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
     )}`;
     
-    // Open email client
     window.location.href = mailtoLink;
     
-    // Show success message
     const submitBtn = this.querySelector('button[type="submit"]');
     const originalText = submitBtn.innerHTML;
     submitBtn.innerHTML = '✅ Message Sent!';
     submitBtn.style.background = 'var(--success)';
     
-    // Reset form
     this.reset();
     
-    // Reset button after 3 seconds
     setTimeout(() => {
         submitBtn.innerHTML = originalText;
         submitBtn.style.background = '';
     }, 3000);
 });
 
-// Add some interactive effects
 document.querySelectorAll('.project-card, .skill-card, .experience-card').forEach(card => {
     card.addEventListener('mouseenter', function() {
         this.style.transform = 'translateY(-10px) scale(1.02)';
@@ -137,7 +120,6 @@ document.querySelectorAll('.project-card, .skill-card, .experience-card').forEac
     });
 });
 
-// Dynamic typing effect for hero subtitle
 const subtitleElement = document.querySelector('.hero-text .subtitle');
 const subtitles = [
     'Full-Stack Developer & Problem Solver',
@@ -158,17 +140,14 @@ function changeSubtitle() {
     }
 }
 
-// Change subtitle every 4 seconds after initial load
 setTimeout(() => {
     setInterval(changeSubtitle, 4000);
 }, 3000);
 
-// Add cursor pointer to clickable elements
 document.querySelectorAll('.btn, .project-link, .social-link, .nav-links a').forEach(element => {
     element.style.cursor = 'pointer';
 });
 
-// Console message for developers
 console.log(`
 🚀 Welcome to Parash Kumar Sahu's Portfolio!
 
